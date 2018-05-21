@@ -1,0 +1,13 @@
+[Unit]
+Description=Create gateway on ethernet Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/create_dhcp --config /etc/create_dhcp.conf --no-virt
+KillSignal=SIGINT
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
